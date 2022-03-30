@@ -34,7 +34,7 @@ ORDER BY 1,2;
 SELECT Location,MAX(total_cases) as HighestInfectionCount, population, MAX((total_cases/population))*100 AS 'Percentage of Population Infected'
 FROM PortfolioProject..CovidDeaths
 --WHERE location like'%kingdom%'
-GROUP BY Continent, Population
+GROUP BY location, population
 ORDER BY 'Percentage of Population Infected' DESC;
 
 --Countries with Highest Infection Rate compared to Population
@@ -159,3 +159,26 @@ WHERE dea.continent IS NOT NULL
 
 
 SELECT * FROM PercentPopulationVaccinated
+
+
+
+SELECT location, SUM(CAST(new_deaths AS INT)) AS 'Total Death Count'
+FROM PortfolioProject..CovidDeaths
+WHERE continent IS NULL
+AND location NOT IN ('World','European Union', 'International')
+GROUP BY location
+ORDER BY 'Total Death Count' DESC
+;
+
+
+SELECT location,MAX(total_cases) as HighestInfectionCount, population, MAX((total_cases/population))*100 AS 'Percentage of Population Infected'
+FROM PortfolioProject..CovidDeaths
+--WHERE location like'%kingdom%'
+GROUP BY location, population
+ORDER BY 'Percentage of Population Infected' DESC;
+
+SELECT location,date,population,MAX(total_cases) as HighestInfectionCount, MAX((total_cases/population))*100 AS 'Percentage of Population Infected'
+FROM PortfolioProject..CovidDeaths
+--WHERE location like'%kingdom%'
+GROUP BY location, population, date
+ORDER BY 'Percentage of Population Infected' DESC;
