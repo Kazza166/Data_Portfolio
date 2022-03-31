@@ -1,0 +1,4 @@
+CREATE TABLE Payments (
+    payment_ID INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    payment_type VARCHAR(255) NOT NULL
+);

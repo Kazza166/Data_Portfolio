@@ -1,0 +1,1 @@
+show variables where Variable_Name = "datadir"
